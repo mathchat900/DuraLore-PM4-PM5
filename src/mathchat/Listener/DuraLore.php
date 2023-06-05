@@ -9,9 +9,9 @@ use pocketmine\player\Player;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
+use pocketmine\item\getTypeId;
 use pocketmine\event\block\BlockBreakEvent;
-use pocketmine\color\Color;
+use pocketmine\item\getArmorSlot;
 use pocketmine\item\Durable;
 
 class DuraLore implements Listener
@@ -22,7 +22,7 @@ class DuraLore implements Listener
         $player = $event->getEntity();
         if ($player instanceof Player) {
             $armor = $player->getArmorInventory();
-            if ($armor->getHelmet()->getId() !== 0) {
+            if ($armor->getHelmet()->getTypeId() !== 0) {
                 $helmet = $armor->getHelmet();
                 if ($helmet instanceof Durable) {
                     $dura = $helmet->getMaxDurability() - $helmet->getDamage();
@@ -31,7 +31,7 @@ class DuraLore implements Listener
                     $armor->setHelmet($helmet);
                 }
             }
-            if ($armor->getChestplate()->getId() !== 0) {
+            if ($armor->getChestplate()->getTypeId() !== 0) {
                 $chestplate = $armor->getChestplate();
                 if ($chestplate instanceof Durable) {
                     $dura = $chestplate->getMaxDurability() - $chestplate->getDamage();
@@ -40,7 +40,7 @@ class DuraLore implements Listener
                     $armor->setChestplate($chestplate);
                 }
             }
-            if ($armor->getLeggings()->getId() !== 0) {
+            if ($armor->getLeggings()->getTypeId() !== 0) {
                 $leggings = $armor->getLeggings();
                 if ($leggings instanceof Durable) {
                     $dura = $leggings->getMaxDurability() - $leggings->getDamage();
@@ -49,7 +49,7 @@ class DuraLore implements Listener
                     $armor->setLeggings($leggings);
                 }
             }
-            if ($armor->getBoots()->getId() !== 0) {
+            if ($armor->getBoots()->getTypeId() !== 0) {
                 $boots = $armor->getBoots();
                 if ($boots instanceof Durable) {
                     $dura = $boots->getMaxDurability() - $boots->getDamage();
